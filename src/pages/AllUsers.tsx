@@ -10,8 +10,6 @@ export default function AllUsers() {
         queryFn: fetchUsers,
     });
 
-    console.log(data);
-
     if (isLoading) return <p>Loading...</p>;
     if (error instanceof Error)
         return <p>Error fetching data: {error.message}</p>;
