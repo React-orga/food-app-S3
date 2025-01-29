@@ -4,13 +4,14 @@ export default function Typography({
     children,
     variant,
     underline,
+    className,
 }: TypographyProps) {
     if (variant === "h1") {
         return (
             <h1
                 className={`text-4xl font-bold text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </h1>
@@ -21,7 +22,7 @@ export default function Typography({
             <h2
                 className={`text-3xl font-bold text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </h2>
@@ -33,7 +34,7 @@ export default function Typography({
             <h3
                 className={`text-2xl font-bold text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </h3>
@@ -44,7 +45,7 @@ export default function Typography({
             <h4
                 className={`text-xl font-bold text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </h4>
@@ -56,7 +57,7 @@ export default function Typography({
             <h5
                 className={`text-lg font-bold text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </h5>
@@ -67,7 +68,7 @@ export default function Typography({
             <h6
                 className={`text-base font-bold text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </h6>
@@ -79,7 +80,7 @@ export default function Typography({
             <p
                 className={`text-base text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </p>
@@ -90,7 +91,7 @@ export default function Typography({
             <span
                 className={`text-base text-gray-800 ${
                     underline ? "underline" : ""
-                }`}
+                } ${className}`}
             >
                 {children}
             </span>

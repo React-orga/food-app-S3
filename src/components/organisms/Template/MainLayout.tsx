@@ -12,10 +12,10 @@ export default function MainLayout({
                 links={[
                     { label: "Home", href: "/" },
                     { label: "Cart", href: "/cart" },
+                    { label: "All Users", href: "/all-users" },
                 ]}
             />
-
-            <main className="flex-grow">{children}</main>
+            <main className="container mx-auto flex-grow">{children}</main>
             <Footer />
         </div>
     );
