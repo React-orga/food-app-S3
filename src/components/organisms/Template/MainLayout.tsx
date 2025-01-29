@@ -14,7 +14,6 @@ export default function MainLayout({
                     { label: "produits", href: "/products" },
                 ]}
             />
-
             <main className="flex-grow">{children}</main>
             <Footer />
         </div>
