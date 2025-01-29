@@ -1,12 +1,13 @@
-import Typography from "./components/atoms/Typography/Typography";
+import Typography from "@/components/atoms/Typography/Typography";
+import MainLayout from "@/components/organisms/Template/MainLayout";
 
 function App() {
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <MainLayout>
             <Typography variant="h1" underline>
                 Hello World
             </Typography>
-        </div>
+        </MainLayout>
     );
 }
 
