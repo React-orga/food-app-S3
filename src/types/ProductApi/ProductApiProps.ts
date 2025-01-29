@@ -5,12 +5,10 @@ export interface IProductApi {
     description: string;
     category: string;
     image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
 }
 
 export interface IProductApiResponse {
     data: IProductApi[];
 }
+
+export type IProductDetailResponse = IProductApi;
