@@ -1,4 +1,6 @@
 import Typography from "./components/atoms/Typography/Typography";
+import Home from "@pages/Home";
+
 
 function App() {
     return (
@@ -6,6 +8,7 @@ function App() {
             <Typography variant="h1" underline>
                 Hello World
             </Typography>
+            <Home />
         </div>
     );
 }
