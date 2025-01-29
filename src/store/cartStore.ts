@@ -2,7 +2,7 @@ import { IProductApi } from "@/types/ProductApi/ProductApiProps";
 import { create } from "zustand";
 
 interface CartItem extends IProductApi {
-    quantity: number;
+    quantity?: number;
 }
 
 interface CartStore {
@@ -26,7 +26,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
                 return {
                     items: state.items.map((item) =>
                         item.id === product.id
-                            ? { ...item, quantity: item.quantity + 1 }
+                            ? { ...item, quantity: (item.quantity ?? 0) + 1 }
                             : item
                     ),
                 };
