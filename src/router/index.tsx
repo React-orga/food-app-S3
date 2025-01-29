@@ -1,6 +1,5 @@
 import App from "@/App";
-import DetailProduct from "@/pages/DetailProduct";
-import Home from "@/pages/Home";
+import * as Pages from "@/pages";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -10,7 +9,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: <Pages.Home />,
             },
             // {
             //     path: "/cart",
@@ -18,12 +17,12 @@ export const router = createBrowserRouter([
             // },
             {
                 path: "/product/:id",
-                element: <DetailProduct />,
+                element: <Pages.DetailProduct />,
             },
-            // {
-            //     path: "/all-users",
-            //     element: <AllUsers />,
-            // },
+            {
+                path: "/all-users",
+                element: <Pages.AllUsers />,
+            },
             // {
             //     path: "/user/:id",
             //     element: <UserDetail />,
