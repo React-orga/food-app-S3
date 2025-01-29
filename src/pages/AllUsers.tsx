@@ -1,163 +1,20 @@
+import { fetchUsers } from "@/api/UserApi";
 import Button from "@/components/atoms/Button/Button";
 import Typography from "@/components/atoms/Typography/Typography";
+import { IUserApi } from "@/types/UserApi/UserApiProps";
+import { useQuery } from "@tanstack/react-query";
 
 export default function AllUsers() {
-    const MockedUsers = [
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-        {
-            address: {
-                geolocation: {
-                    lat: "-37.3159",
-                    long: "81.1496",
-                },
-                city: "kilcoole",
-                street: "new road",
-                number: 7682,
-                zipcode: "12926-3874",
-            },
-            id: 1,
-            email: "john@gmail.com",
-            username: "johnd",
-            password: "m38rmF$",
-            name: {
-                firstname: "john",
-                lastname: "doe",
-            },
-            phone: "1-570-236-7033",
-            __v: 0,
-        },
-    ];
+    const { data, isLoading, error } = useQuery({
+        queryKey: ["users"],
+        queryFn: fetchUsers,
+    });
+
+    console.log(data);
+
+    if (isLoading) return <p>Loading...</p>;
+    if (error instanceof Error)
+        return <p>Error fetching data: {error.message}</p>;
 
     return (
         <div className="px-4 py-8">
@@ -198,50 +55,55 @@ export default function AllUsers() {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                        {MockedUsers.map((user) => (
-                            <tr
-                                key={user.id}
-                                className="hover:bg-gray-50 transition-colors duration-200"
-                            >
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.name.firstname} {user.name.lastname}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.email}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.phone}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.address.street}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.address.city}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.address.zipcode}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    {user.username}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800">
-                                    <Button
-                                        label="détails"
-                                        className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                                        onClick={() => {
-                                            alert("détails");
-                                        }}
-                                    />
-                                    <Button
-                                        label="se connecter"
-                                        className="bg-green-500 text-white px-4 py-2 rounded-md"
-                                        onClick={() => {
-                                            alert("se connecter");
-                                        }}
-                                    />
-                                </td>
-                            </tr>
-                        ))}
+                        {Array.isArray(data) ? (
+                            data.map((user: IUserApi) => (
+                                <tr
+                                    key={user.id}
+                                    className="hover:bg-gray-50 transition-colors duration-200"
+                                >
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.name.firstname}{" "}
+                                        {user.name.lastname}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.email}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.phone}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.address.street}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.address.city}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.address.zipcode}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        {user.username}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800">
+                                        <Button
+                                            label="détails"
+                                            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                                            onClick={() => {
+                                                alert("détails");
+                                            }}
+                                        />
+                                        <Button
+                                            label="se connecter"
+                                            className="bg-green-500 text-white px-4 py-2 rounded-md"
+                                            onClick={() => {
+                                                alert("se connecter");
+                                            }}
+                                        />
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <p>No users available</p>
+                        )}
                     </tbody>
                 </table>
             </div>

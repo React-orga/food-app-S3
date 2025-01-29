@@ -1,7 +1,7 @@
 import { IProductApiResponse } from "@/types/ProductApi/ProductApiProps";
 import axios from "axios";
 
-const BASE_URL = "https://fakestoreapi.com/";
+export const BASE_URL = "https://fakestoreapi.com/";
 
 export const fetchProducts = async (): Promise<IProductApiResponse> => {
     const response = await axios.get(`${BASE_URL}products`);
