@@ -3,16 +3,36 @@ import Button from "@/components/atoms/Button/Button";
 import Typography from "@/components/atoms/Typography/Typography";
 import { IUserApi } from "@/types/UserApi/UserApiProps";
 import { useQuery } from "@tanstack/react-query";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function AllUsers() {
+    const navigate = useNavigate();
     const { data, isLoading, error } = useQuery({
         queryKey: ["users"],
         queryFn: fetchUsers,
     });
-
     if (isLoading) return <p>Loading...</p>;
     if (error instanceof Error)
         return <p>Error fetching data: {error.message}</p>;
+
+    const handleLogin = (user: IUserApi) => {
+        Cookies.set(
+            "user",
+            JSON.stringify({
+                id: user.id,
+                lastname: user.name.lastname,
+                firstname: user.name.firstname,
+                email: user.email,
+                phone: user.phone,
+            }),
+            { expires: 1 }
+        );
+
+        if (Cookies.get("user")) {
+            navigate("/");
+        }
+    };
 
     return (
         <div className="px-4 py-8">
@@ -92,9 +112,7 @@ export default function AllUsers() {
                                         <Button
                                             label="se connecter"
                                             className="bg-green-500 text-white px-4 py-2 rounded-md"
-                                            onClick={() => {
-                                                alert("se connecter");
-                                            }}
+                                            onClick={() => handleLogin(user)}
                                         />
                                     </td>
                                 </tr>
