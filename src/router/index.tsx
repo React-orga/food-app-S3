@@ -11,10 +11,10 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <Pages.Home />,
             },
-            // {
-            //     path: "/cart",
-            //     element: <Cart />,
-            // },
+            {
+                path: "/cart",
+                element: <Pages.Cart />,
+            },
             {
                 path: "/product/:id",
                 element: <Pages.DetailProduct />,

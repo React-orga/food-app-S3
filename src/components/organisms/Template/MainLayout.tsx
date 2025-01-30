@@ -8,13 +8,7 @@ export default function MainLayout({
 }) {
     return (
         <div className="flex flex-col min-h-screen bg-gray-100">
-            <Header
-                links={[
-                    { label: "Home", href: "/" },
-                    { label: "Cart", href: "/cart" },
-                    { label: "All Users", href: "/all-users" },
-                ]}
-            />
+            <Header />
             <main className="container mx-auto flex-grow">{children}</main>
             <Footer />
         </div>

@@ -33,6 +33,7 @@ export default function AllUsers() {
         });
 
         if (userStore.isLoggedIn()) {
+            window.location.reload();
             navigate("/");
         }
     };

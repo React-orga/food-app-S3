@@ -1,9 +1,16 @@
 import { ICookieUser } from "@/types/cookiesUser/cookiesUser";
+import { IProductApi } from "@/types/ProductApi/ProductApiProps";
 import Cookies from "js-cookie";
 import { create } from "zustand";
+import { useCartStore } from "./cartStore";
+
+interface CartItem extends IProductApi {
+    quantity?: number;
+}
 
 interface UserStore {
     user: ICookieUser;
+    cart: CartItem[];
     setUser: (user: ICookieUser) => void;
     logout: () => void;
     isLoggedIn: () => boolean;
@@ -12,6 +19,7 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>((set) => ({
     user: {} as ICookieUser,
+    cart: [],
     setUser: (user) => {
         Cookies.set("user", JSON.stringify(user));
         set({ user });
@@ -26,5 +34,9 @@ export const useUserStore = create<UserStore>((set) => ({
         return userCookie
             ? (JSON.parse(userCookie) as ICookieUser)
             : ({} as ICookieUser);
+    },
+    getCart: () => {
+        const cart = useCartStore.getState().items;
+        return cart ? (cart as CartItem[]) : ([] as CartItem[]);
     },
 }));
