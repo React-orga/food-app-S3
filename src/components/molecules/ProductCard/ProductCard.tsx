@@ -1,3 +1,4 @@
+import Typography from "@/components/atoms/Typography/Typography";
 import { useCartStore } from "@/store/cartStore";
 import { IProductApi } from "@/types/ProductApi/ProductApiProps";
 import { Link } from "react-router-dom";
@@ -16,15 +17,10 @@ export const ProductCard: React.FC<IProductApi> = (product) => {
                     src={product.image}
                     alt="product image"
                 />
-                <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
-                    39% OFF
-                </span>
             </Link>
             <div className="mt-4 px-5 pb-5">
                 <a href="#">
-                    <h5 className="text-xl tracking-tight text-slate-900">
-                        {product.title}
-                    </h5>
+                    <Typography variant="h5" className="text-xl tracking-tight text-slate-900">{product.title}</Typography>
                 </a>
                 <div className="mt-2 mb-5 flex items-center justify-between">
                     <p>

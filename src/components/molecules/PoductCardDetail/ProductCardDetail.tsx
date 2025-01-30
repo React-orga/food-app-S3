@@ -1,3 +1,4 @@
+import Typography from "@/components/atoms/Typography/Typography"
 import { IProductApi } from "@/types/ProductApi/ProductApiProps"
 
 export const ProductCardDetail: React.FC<IProductApi> = ({ title, price, image, description, category }: IProductApi) => {
@@ -16,8 +17,7 @@ export const ProductCardDetail: React.FC<IProductApi> = ({ title, price, image, 
                     </div>
 
                     <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                        <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{title}</h1>
-
+                        <Typography variant="h1" className="sm: text-2xl font-bold sm:text-3xl" >{title}</Typography>
                         <div className="mt-5 flex items-center">
                             <div className="flex items-center">
                                 <svg className="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -42,14 +42,13 @@ export const ProductCardDetail: React.FC<IProductApi> = ({ title, price, image, 
                         <h2 className="mt-8 text-base text-gray-900">Product Category</h2>
                         <div className="mt-3 flex select-none flex-wrap items-center gap-1">
                             <label className="">
-                                <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">{ category }</p>
+                                <Typography variant="p" className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">{category}</Typography>
                             </label>
                         </div>
 
                         <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                             <div className="flex items-end">
-                                <h1 className="text-3xl font-bold">${price}</h1>
-                                <span className="text-base">/month</span>
+                                <Typography variant="h1" className="text-3xl font-bold">${price}</Typography>
                             </div>
 
                             <button type="button" className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
@@ -90,8 +89,8 @@ export const ProductCardDetail: React.FC<IProductApi> = ({ title, price, image, 
                         </div>
 
                         <div className="mt-8 flow-root sm:mt-12">
-                            <h1 className="text-3xl font-bold">Delivered To Your Door</h1>
-                            <p className="mt-4">{description}</p>
+                            <Typography variant="h1" className="text-3xl font-bold">Delivered To Your Door</Typography>
+                            <Typography variant="p" className="mt-4">{description}</Typography>
                         </div>
                     </div>
                 </div>

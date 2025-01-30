@@ -10,6 +10,7 @@ export const useAddProduct = () => {
         mutationFn: addProduct,
         onSuccess: (newProduct) => {
             queryClient.setQueryData(["Products"], (oldData: IProductApiResponse[] | undefined) => {
+                alert("Produit ajouté avec succès");
                 return oldData ? [...oldData, newProduct] : [newProduct];
             });
         },
