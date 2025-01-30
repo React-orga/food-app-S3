@@ -1,6 +1,11 @@
-# Food App
+# 🛒 React Shop
+React Shop is an e-commerce application built with React, allowing users to browse products, add items to their cart, and manage their purchases effortlessly.
 
-This is a React project.
+## ✨ Features:
+- 🛍️ Add to cart and order management
+- 📄 Product details
+- 🎨 Modern and responsive UI
+- 💻 Technologies used: React, React Router, TanStack Query, Tailwind, js-cookie, Zustand, external API for products
 
 ## Prerequisites
 
