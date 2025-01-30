@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IUserApi {
     address: {
         geolocation: {
@@ -22,5 +24,10 @@ export interface IUserApi {
 }
 
 export interface IUserApiResponse {
+    name: any;
+    email: ReactNode;
+    phone: ReactNode;
+    username: ReactNode;
+    address: any;
     data: IUserApi[];
 }

@@ -28,7 +28,11 @@ export const fetchProductById = async (id: number): Promise<IProductApiResponse>
 // Ajouter un produit (POST)
 export const addProduct = async (newProduct: Partial<IProductApiResponse>): Promise<IProductApiResponse> => {
     try {
-        console.log("Sending new product:", newProduct); // ✅ Debugging
+        // Validation des données avant envoi
+        if (!newProduct.title || !newProduct.price) {
+            throw new Error("Title and price are required.");
+        }
+
         const response = await axios.post(BASE_URL, {
             title: newProduct.title,
             price: newProduct.price,
@@ -36,10 +40,11 @@ export const addProduct = async (newProduct: Partial<IProductApiResponse>): Prom
             image: newProduct.image || "https://citygem.app/wp-content/uploads/2024/08/placeholder-1-1.png",
             category: newProduct.category || "Default category",
         });
+
         console.log("Product added:", response.data); // ✅ Debugging
         return response.data;
-    } catch (error) {
-        console.error("Error adding product:", error);
+    } catch (error: any) {
+        console.error("Error adding product:", error.message || error);
         throw error;
     }
 };

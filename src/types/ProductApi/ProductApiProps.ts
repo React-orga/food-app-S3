@@ -9,6 +9,12 @@ export interface IProductApi {
 }
 
 export interface IProductApiResponse {
+    title: string;
+    id: number;
+    price: number;
+    description?: string;
+    category?: string;
+    image?: string;
     data: IProductApi[];
 }
 
