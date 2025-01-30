@@ -1,9 +1,9 @@
 import { fetchUsers } from "@/api/UserApi";
 import Button from "@/components/atoms/Button/Button";
 import Typography from "@/components/atoms/Typography/Typography";
+import { useUserStore } from "@/store/userStore";
 import { IUserApi } from "@/types/UserApi/UserApiProps";
 import { useQuery } from "@tanstack/react-query";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 export default function AllUsers() {
@@ -17,19 +17,22 @@ export default function AllUsers() {
         return <p>Error fetching data: {error.message}</p>;
 
     const handleLogin = (user: IUserApi) => {
-        Cookies.set(
-            "user",
-            JSON.stringify({
-                id: user.id,
-                lastname: user.name.lastname,
-                firstname: user.name.firstname,
-                email: user.email,
-                phone: user.phone,
-            }),
-            { expires: 1 }
-        );
+        if (useUserStore.getState().isLoggedIn()) {
+            alert(
+                "Vous êtes déjà connecté, vous ne pouvez pas vous connecter avec un autre compte"
+            );
+            return;
+        }
+        const userStore = useUserStore.getState();
+        userStore.setUser({
+            id: user.id,
+            lastname: user.name.lastname,
+            firstname: user.name.firstname,
+            email: user.email,
+            phone: user.phone,
+        });
 
-        if (Cookies.get("user")) {
+        if (userStore.isLoggedIn()) {
             navigate("/");
         }
     };
