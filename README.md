@@ -25,7 +25,9 @@ yarn install
 
 Other dependencies:
 ```sh
-npm install react-router-dom @tanstack/react-query zustand axios
+npm install react-router-dom @tanstack/react-query zustand axios js-cookie
+npm install --save-dev vite-tsconfig-paths
+npm install --save-dev @types/js-cookie
 ```
 
 ## Running the Project

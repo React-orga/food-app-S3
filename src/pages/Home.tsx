@@ -1,7 +1,7 @@
 import { fetchProducts } from "@api/ProductApi";
 import ProductCard from "@components/molecules/ProductCard/ProductCard";
 import { useQuery } from "@tanstack/react-query";
-import { IProductApi } from "@types/ProductApi/ProductApiProps";
+import { IProductApi, IProductApiResponse } from "@types/ProductApi/ProductApiProps";
 import { useMemo } from "react";
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
     // useMemo mémorise les produits pendant 5 minutes (staleTime)
     const memoizedProducts = useMemo(() => {
         if (!data) return [];
-        return data.map((product: IProductApi) => ({
+        return data.map((product: IProductApiResponse) => ({
             ...product,
             price: `${product.price}€`,
             title: product.title.toUpperCase(),

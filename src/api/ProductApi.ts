@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const BASE_URL = "https://fakestoreapi.com/";
 
-export const fetchProducts = async (): Promise<IProduct[]> => {
+export const fetchProducts = async (): Promise<IProductApiResponse[]> => {
     try {
         const response = await axios.get(`${BASE_URL}products`);
         return response.data;
@@ -13,7 +13,7 @@ export const fetchProducts = async (): Promise<IProduct[]> => {
     }
 };
 
-export const fetchProductById = async (id: number): Promise<IProduct> => {
+export const fetchProductById = async (id: number): Promise<IProductApiResponse> => {
     try {
         const response = await axios.get(`${BASE_URL}products/${id}`);
         return response.data;
