@@ -69,7 +69,7 @@ const TrollPage = () => {
                 </motion.div>
             )}
 
-            <style jsx>{`
+            <style>{`
         @keyframes glitch {
           0% { text-shadow: 2px 2px red, -2px -2px blue; }
           50% { text-shadow: -2px -2px red, 2px 2px blue; }

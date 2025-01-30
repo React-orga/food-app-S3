@@ -2,19 +2,20 @@ import { fetchProducts } from "@api/ProductApi";
 import ProductCard from "@components/molecules/ProductCard/ProductCard";
 import { useAddProduct } from "@hooks/Mutation";
 import { useQuery } from "@tanstack/react-query";
-import { IProductApiResponse } from "@types/ProductApi/ProductApiProps";
+import { IProductApiResponse } from "@/types/ProductApi/ProductApiProps"
+
 import { useMemo, useState } from "react";
 
 const Home = () => {
-    const [newProduct, setNewProduct] = useState({
+    const [newProduct, setNewProduct] = useState<Partial<IProductApiResponse>>({
         title: "",
-        price: "",
+        price: 0,
         description: "",
         image: "",
         category: "",
     });
 
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error } = useQuery<IProductApiResponse[]>({
         queryKey: ["Products"],
         queryFn: fetchProducts,
         staleTime: 5 * 60 * 1000,
@@ -46,7 +47,7 @@ const Home = () => {
                             placeholder={
                                 field.charAt(0).toUpperCase() + field.slice(1)
                             }
-                            value={newProduct[field as keyof typeof newProduct]}
+                            value={String(newProduct[field as keyof typeof newProduct] || '')}
                             onChange={(e) =>
                                 setNewProduct((prev) => ({
                                     ...prev,
@@ -60,16 +61,15 @@ const Home = () => {
                 <button
                     onClick={() => {
                         if (
-                            newProduct.title &&
-                            newProduct.price &&
-                            newProduct.price.match(/^\d+(\.\d{1,2})?$/)
-                        ) {
+                            newProduct?.title &&
+                            newProduct?.price &&
+                            !isNaN(parseFloat(String(newProduct.price))) &&
+                            parseFloat(String(newProduct.price)) > 0
+                          ) {
                             addProductMutation.mutate(newProduct);
-                        } else {
-                            alert(
-                                "Please fill the title and price fields correctly"
-                            );
-                        }
+                          } else {
+                            alert("Please fill the title and price fields correctly");
+                          }
                     }}
                     className="bg-blue-500 text-white px-4 py-2"
                 >

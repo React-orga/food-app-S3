@@ -1,18 +1,18 @@
 import { fetchUserById } from "@/api/UserApi";
 import Button from "@/components/atoms/Button/Button";
 import Typography from "@/components/atoms/Typography/Typography";
-import { IUserApi } from "@/types/UserApi/UserApiProps";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
+import { IUserApiResponse } from "@/types/UserApi/UserApiProps";
 
 export default function UserDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const { data: user, isLoading, error } = useQuery<IUserApi>({
+    const { data: user, isLoading, error } = useQuery<IUserApiResponse>({
         queryKey: ["user", id],
-        queryFn: () => fetchUserById(id),
-        enabled: !!id, // Évite de faire la requête si id est null
+        queryFn: () => fetchUserById(Number(id)),
+        enabled: !!id, 
     });
 
     if (isLoading) return <p>Loading user details...</p>;
