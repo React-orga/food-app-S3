@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
                 path: "/user/:id",
                 element: <Pages.UserDetail />,
             },
+            {
+                path: "/troll",
+                element: <Pages.Troll />,
+            },
         ],
     },
 ]);
