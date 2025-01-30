@@ -1,10 +1,25 @@
 import Typography from "@/components/atoms/Typography/Typography";
 import { useCartStore } from "@/store/cartStore";
+import { useUserStore } from "@/store/userStore";
 import { IProductApi } from "@/types/ProductApi/ProductApiProps";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ProductCard: React.FC<IProductApi> = (product) => {
     const addItem = useCartStore((state) => state.addItem);
+    const isLoggedIn = useUserStore((state) => state.isLoggedIn());
+    const navigate = useNavigate();
+
+    const handleAddToCart = () => {
+        if (!isLoggedIn) {
+            alert(
+                "Vous devez être connecté pour ajouter des produits au panier"
+            );
+            navigate("/all-users");
+            return;
+        }
+        addItem(product);
+        alert("Produit ajouté au panier");
+    };
 
     return (
         <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
@@ -19,9 +34,14 @@ export const ProductCard: React.FC<IProductApi> = (product) => {
                 />
             </Link>
             <div className="mt-4 px-5 pb-5">
-                <a href="#">
-                    <Typography variant="h5" className="text-xl tracking-tight text-slate-900">{product.title}</Typography>
-                </a>
+                <Link to={`/product/${product.id}`}>
+                    <Typography
+                        variant="h5"
+                        className="text-xl tracking-tight text-slate-900"
+                    >
+                        {product.title}
+                    </Typography>
+                </Link>
                 <div className="mt-2 mb-5 flex items-center justify-between">
                     <p>
                         <span className="text-3xl font-bold text-slate-900">
@@ -79,11 +99,8 @@ export const ProductCard: React.FC<IProductApi> = (product) => {
                         </span>
                     </div>
                 </div>
-                <a
-                    onClick={() => {
-                        addItem(product);
-                        alert("Produit ajouté au panier");
-                    }}
+                <Link
+                    to={`/product/${product.id}`}
                     className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300"
                 >
                     <svg
@@ -101,7 +118,7 @@ export const ProductCard: React.FC<IProductApi> = (product) => {
                         />
                     </svg>
                     Add to cart
-                </a>
+                </Link>
             </div>
         </div>
     );

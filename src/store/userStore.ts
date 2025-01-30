@@ -27,6 +27,7 @@ export const useUserStore = create<UserStore>((set) => ({
     logout: () => {
         Cookies.remove("user");
         set({ user: {} as ICookieUser });
+        useCartStore.getState().clearCart();
         window.location.reload();
     },
     isLoggedIn: () => !!Cookies.get("user"),
