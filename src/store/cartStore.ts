@@ -16,7 +16,6 @@ interface CartStore {
 
 export const useCartStore = create<CartStore>((set, get) => ({
     items: [],
-
     addItem: (product) =>
         set((state) => {
             const existingItem = state.items.find(

@@ -5,6 +5,7 @@ export interface IProductApi {
     description: string;
     category: string;
     image: string;
+    product?: IProductApi;
 }
 
 export interface IProductApiResponse {

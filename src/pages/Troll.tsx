@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
 import Button from "@/components/atoms/Button/Button";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const TrollPage = () => {
     const [response, setResponse] = useState<string | null>(null); // gère la réponse
@@ -35,15 +35,12 @@ const TrollPage = () => {
                     className="bg-red-600 hover:bg-red-700 text-white text-lg px-6 py-3 rounded-lg"
                     onClick={() => setResponse("yes")}
                     label="Oui"
-                >
-                </Button>
+                ></Button>
                 <Button
                     className="bg-red-600 hover:bg-red-700 text-white text-lg px-6 py-3 rounded-lg"
                     onClick={() => setResponse("no")}
                     label="Non"
-                >
-                </Button>
-
+                ></Button>
             </motion.div>
 
             {response && (
@@ -57,26 +54,40 @@ const TrollPage = () => {
                         <>
                             <span className="text-green-500">Merci !</span>
                             <br />
-                            <span className="text-white">Vous avez obtenu votre 20/20 ! 🎉</span>
+                            <span className="text-white">
+                                Vous avez obtenu votre 20/20 ! 🎉
+                            </span>
                         </>
                     ) : (
                         <>
-                            <span className="text-red-500">Mauvaise réponse...</span>
+                            <span className="text-red-500">
+                                Mauvaise réponse...
+                            </span>
                             <br />
-                            <span className="text-white">Démarrage du formatage en cours...</span>
+                            <span className="text-white">
+                                Démarrage du formatage en cours...
+                            </span>
                         </>
                     )}
                 </motion.div>
             )}
 
             <style jsx>{`
-        @keyframes glitch {
-          0% { text-shadow: 2px 2px red, -2px -2px blue; }
-          50% { text-shadow: -2px -2px red, 2px 2px blue; }
-          100% { text-shadow: 2px -2px blue, -2px 2px red; }
-        }
-        .glitch { animation: glitch 0.5s infinite alternate; }
-      `}</style>
+                @keyframes glitch {
+                    0% {
+                        text-shadow: 2px 2px red, -2px -2px blue;
+                    }
+                    50% {
+                        text-shadow: -2px -2px red, 2px 2px blue;
+                    }
+                    100% {
+                        text-shadow: 2px -2px blue, -2px 2px red;
+                    }
+                }
+                .glitch {
+                    animation: glitch 0.5s infinite alternate;
+                }
+            `}</style>
         </div>
     );
 };
