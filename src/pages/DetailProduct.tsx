@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Typography from "@/components/atoms/Typography/Typography";
 import { useParams } from "react-router-dom";
 import { ProductCardDetail } from "@/components/molecules/PoductCardDetail/ProductCardDetail";
@@ -11,7 +10,7 @@ export default function DetailProduct() {
 
     // Vérification et conversion de l'ID en nombre
     const productId = id ? parseInt(id, 10) : null;
-    if (isNaN(productId)) {
+    if (productId === null || isNaN(productId)) {
         return <p>ID invalide !</p>;
     }
 
@@ -37,6 +36,7 @@ export default function DetailProduct() {
         <div className="container mx-auto px-4 py-8">
             <Typography variant="h1">Détail du Produit {data.title}</Typography>
             <ProductCardDetail
+                id={data.id}
                 title={data.title}
                 price={data.price}
                 image={data.image}

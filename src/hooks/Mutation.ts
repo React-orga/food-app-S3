@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addProduct } from "@api/ProductApi";
-import { IProductApiResponse } from "@types/ProductApi/ProductApiProps";
+import { IProductApiResponse } from "@/types/ProductApi/ProductApiProps";
 
 // ✅ Mutation pour ajouter un produit
 export const useAddProduct = () => {
