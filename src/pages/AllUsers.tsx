@@ -109,7 +109,7 @@ export default function AllUsers() {
                                             label="détails"
                                             className="bg-blue-500 text-white px-4 py-2 rounded-md"
                                             onClick={() => {
-                                                alert("détails");
+                                               navigate(`/user/${user.id}`);
                                             }}
                                         />
                                         <Button

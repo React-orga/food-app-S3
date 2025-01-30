@@ -23,10 +23,10 @@ export const router = createBrowserRouter([
                 path: "/all-users",
                 element: <Pages.AllUsers />,
             },
-            // {
-            //     path: "/user/:id",
-            //     element: <UserDetail />,
-            // },
+            {
+                path: "/user/:id",
+                element: <Pages.UserDetail />,
+            },
         ],
     },
 ]);
