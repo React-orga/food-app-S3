@@ -32,6 +32,7 @@
             "@organisms/*": ["src/components/organisms/*"],
             "@templates/*": ["src/components/templates/*"],
             "@api/*": ["src/api/*"],
+            "@hooks/*": ["src/hooks/*"],
             "@pages/*": ["src/pages/*"],
             "@utils/*": ["src/utils/*"]
         }
