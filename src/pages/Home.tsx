@@ -81,7 +81,12 @@ const Home = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {memoizedProducts.map((product: IProductApiResponse) => (
                     <div key={product.id} className="relative border p-4">
-                        <ProductCard {...product} />
+                        <ProductCard
+                            {...product}
+                            description={product.description || ''}
+                            category={product.category || ''}
+                            image={product.image || ''}
+                        />
                     </div>
                 ))}
             </div>
