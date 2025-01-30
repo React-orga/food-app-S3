@@ -33,8 +33,8 @@ export default function AllUsers() {
         });
 
         if (userStore.isLoggedIn()) {
-            window.location.reload();
             navigate("/");
+            window.location.reload();
         }
     };
 
@@ -110,7 +110,7 @@ export default function AllUsers() {
                                             label="détails"
                                             className="bg-blue-500 text-white px-4 py-2 rounded-md"
                                             onClick={() => {
-                                               navigate(`/user/${user.id}`);
+                                                navigate(`/user/${user.id}`);
                                             }}
                                         />
                                         <Button

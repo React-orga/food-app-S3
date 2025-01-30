@@ -66,6 +66,13 @@ export default function Header() {
                                 </Link>
                             </li>
                         ))}
+                        {userStore.isLoggedIn() && (
+                            <li>
+                                <button onClick={userStore.logout}>
+                                    Logout
+                                </button>
+                            </li>
+                        )}
                     </ul>
                 </nav>
             </div>
