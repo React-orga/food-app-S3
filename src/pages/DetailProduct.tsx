@@ -1,7 +1,7 @@
 import { fetchProductById } from "@/api/ProductApi";
 import Typography from "@/components/atoms/Typography/Typography";
 import { ProductCardDetail } from "@/components/molecules/PoductCardDetail/ProductCardDetail";
-import { IProductApi } from "@/types/ProductApi/ProductApiProps";
+import { IProductApiResponse } from "@/types/ProductApi/ProductApiProps";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
@@ -14,7 +14,7 @@ export default function DetailProduct() {
         return <p>ID invalide !</p>;
     }
 
-    const { data, isLoading, isError, error } = useQuery<IProductApi>({
+    const { data, isLoading, isError, error } = useQuery<IProductApiResponse>({
         queryKey: ["Product", productId], // Utiliser l'ID dans la clé pour que la requête soit dynamique
         queryFn: () => fetchProductById(productId),
         staleTime: 5 * 60 * 1000, // 5 minutes
@@ -44,9 +44,9 @@ export default function DetailProduct() {
                 id={productId}
                 title={data.title}
                 price={data.price}
-                image={data.image}
-                description={data.description}
-                category={data.category}
+                image={data.image ?? ''}
+                description={data.description ?? ''}
+                category={data.category ?? ''}
             />
         </div>
     );
