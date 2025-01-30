@@ -29,7 +29,7 @@ export const ProductCard: React.FC<IProductApi> = (product) => {
                 <div className="mt-2 mb-5 flex items-center justify-between">
                     <p>
                         <span className="text-3xl font-bold text-slate-900">
-                            {product.price}
+                            {product.price} €
                         </span>
                     </p>
                     <div className="flex items-center">
